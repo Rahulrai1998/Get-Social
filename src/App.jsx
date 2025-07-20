@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="d-flex" style={{ height: "100vh" }}>
       <Sidebar />
-      <div className=" w-100">
+      <div className="w-100">
         <Header />
         <Footer />
       </div>

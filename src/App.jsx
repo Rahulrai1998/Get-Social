@@ -1,7 +1,19 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 
 function App() {
-  return <>GetSocial</>;
+  return (
+    <div className="d-flex" style={{ height: "100vh" }}>
+      <Sidebar />
+      <div className=" w-100">
+        <Header />
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
 export default App;

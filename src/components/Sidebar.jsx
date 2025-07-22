@@ -3,13 +3,13 @@ import React from "react";
 const Sidebar = ({ selectedTab, onTabClick }) => {
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary"
+      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark "
       style={{ width: "280px" }}
     >
       {" "}
       <a
         href="/"
-        className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
       >
         {" "}
         <svg
@@ -20,7 +20,7 @@ const Sidebar = ({ selectedTab, onTabClick }) => {
         >
           <use xlinkHref="#bootstrap"></use>
         </svg>{" "}
-        <span className="fs-4">Sidebar</span>{" "}
+        <span className="fs-4">GetSocial</span>{" "}
       </a>{" "}
       <hr />{" "}
       <ul className="nav nav-pills flex-column mb-auto">
@@ -29,7 +29,9 @@ const Sidebar = ({ selectedTab, onTabClick }) => {
           {" "}
           <a
             href="#"
-            className={`nav-link ${selectedTab === "Home" && "active"}`}
+            className={`nav-link text-white ${
+              selectedTab === "Home" && "active"
+            }`}
             aria-current="page"
           >
             {" "}
@@ -48,7 +50,7 @@ const Sidebar = ({ selectedTab, onTabClick }) => {
           {" "}
           <a
             href="#"
-            className={`nav-link link-body-emphasis ${
+            className={`nav-link text-white ${
               selectedTab === "Profile" && "active"
             }`}
           >
@@ -68,7 +70,7 @@ const Sidebar = ({ selectedTab, onTabClick }) => {
           {" "}
           <a
             href="#"
-            className={`nav-link link-body-emphasis ${
+            className={`nav-link text-white ${
               selectedTab === "CreatePost" && "active"
             }`}
           >
@@ -90,7 +92,7 @@ const Sidebar = ({ selectedTab, onTabClick }) => {
         {" "}
         <a
           href="#"
-          className="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+          className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ selectedTab, onTabClick }) => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary"
@@ -25,9 +25,13 @@ const Sidebar = () => {
       <hr />{" "}
       <ul className="nav nav-pills flex-column mb-auto">
         {" "}
-        <li className="nav-item">
+        <li className="nav-item" onClick={() => onTabClick("Home")}>
           {" "}
-          <a href="#" className="nav-link active" aria-current="page">
+          <a
+            href="#"
+            className={`nav-link ${selectedTab === "Home" && "active"}`}
+            aria-current="page"
+          >
             {" "}
             <svg
               className="bi pe-none me-2"
@@ -40,9 +44,14 @@ const Sidebar = () => {
             Home
           </a>{" "}
         </li>{" "}
-        <li>
+        <li onClick={() => onTabClick("Profile")}>
           {" "}
-          <a href="#" className="nav-link link-body-emphasis">
+          <a
+            href="#"
+            className={`nav-link link-body-emphasis ${
+              selectedTab === "Profile" && "active"
+            }`}
+          >
             {" "}
             <svg
               className="bi pe-none me-2"
@@ -55,9 +64,14 @@ const Sidebar = () => {
             Profile
           </a>{" "}
         </li>{" "}
-        <li>
+        <li onClick={() => onTabClick("CreatePost")}>
           {" "}
-          <a href="#" className="nav-link link-body-emphasis">
+          <a
+            href="#"
+            className={`nav-link link-body-emphasis ${
+              selectedTab === "CreatePost" && "active"
+            }`}
+          >
             {" "}
             <svg
               className="bi pe-none me-2"

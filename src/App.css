@@ -9,6 +9,7 @@ body {
 .post-list {
   display: block;
   max-width: 600px;
+  height: 100vh;
 }
 .post-card {
   display: block;
@@ -16,4 +17,8 @@ body {
 .delete-icon {
   color: rgba(255, 1, 1, 0.68);
   cursor: pointer;
+}
+
+.form-container {
+  max-width: 50%;
 }

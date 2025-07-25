@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { MdDelete } from "react-icons/md";
 import { PostListContext } from "../store/PostListProvider";
+import avtr from "../assets/portfolio-dp.jpg";
 
 const PostCard = ({ title, body, tags, reactions, id }) => {
   const { deletePost } = useContext(PostListContext);
@@ -14,9 +15,17 @@ const PostCard = ({ title, body, tags, reactions, id }) => {
         {reactions}
         <span className="visually-hidden">unread messages</span>
       </span>
+
       {/* <img src="..." className="card-img-top" alt="..." /> */}
       <div className="card-body">
         <h5 className="card-title">
+          <img
+            src={avtr}
+            alt=""
+            width="36"
+            height="36"
+            className="rounded-circle flex-shrink-0 object-fit-cover me-2"
+          />
           {title}
           <span className="ms-1 delete-icon" onClick={() => deletePost(id)}>
             <MdDelete />

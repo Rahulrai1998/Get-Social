@@ -11,6 +11,10 @@ body {
   max-width: 600px;
   height: 100vh;
 }
+
+.home-create-post {
+  max-width: 600px;
+}
 .post-card {
   display: block;
 }

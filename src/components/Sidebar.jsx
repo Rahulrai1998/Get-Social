@@ -1,4 +1,5 @@
 import React from "react";
+import avatarImg from "../assets/portfolio-dp.jpg";
 
 const Sidebar = ({ selectedTab, onTabClick }) => {
   return (
@@ -98,13 +99,13 @@ const Sidebar = ({ selectedTab, onTabClick }) => {
         >
           {" "}
           <img
-            src="https://github.com/mdo.png"
+            src={avatarImg}
             alt=""
             width="32"
             height="32"
-            className="rounded-circle me-2"
+            className="rounded-circle me-2 object-fit-cover"
           />{" "}
-          <strong>mdo</strong>{" "}
+          <strong>Rahul Kumar</strong>{" "}
         </a>{" "}
         <ul className="dropdown-menu text-small shadow">
           {" "}

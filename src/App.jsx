@@ -7,6 +7,7 @@ import CreatePostForm from "./components/CreatePostForm";
 import PostList from "./components/PostList";
 import { useState } from "react";
 import PostListProvider from "./store/PostListProvider";
+import CreatePostHome from "./components/CreatePostHome";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState("Home");
@@ -21,6 +22,7 @@ function App() {
         <Sidebar selectedTab={selectedTab} onTabClick={handleTabChange} />
         <div className="w-100 overflow-y-auto">
           {/* <Header /> */}
+          {<CreatePostHome />}
           {selectedTab === "Home" && <PostList />}{" "}
           {selectedTab === "CreatePost" && <CreatePostForm />}
           {/* <Footer /> */}

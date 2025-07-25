@@ -20,7 +20,7 @@ function App() {
       <div className="d-flex" style={{ height: "100vh" }}>
         <Sidebar selectedTab={selectedTab} onTabClick={handleTabChange} />
         <div className="w-100 overflow-y-auto">
-          <Header />
+          {/* <Header /> */}
           {selectedTab === "Home" && <PostList />}{" "}
           {selectedTab === "CreatePost" && <CreatePostForm />}
           {/* <Footer /> */}

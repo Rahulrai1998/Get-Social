@@ -11,6 +11,8 @@ const postListReducer = (state, { type, payload }) => {
     case "DELETE_POST":
       return state.filter((post) => post.id !== payload.postId);
       break;
+    case "CREATE_POST":
+      return [...state, payload];
     default:
       return state;
   }
@@ -47,7 +49,21 @@ const PostListProvider = ({ children }) => {
   //WE ARE USING CONTEXT HERE FOR THE PURPOSE OF GLOBAL STATE MANAGEMENT
   const [postList, dispatch] = useReducer(postListReducer, DEFAULT_POST_LIST);
 
-  const createPost = () => {};
+  const createPost = (userId, title, body, tags, reactions) => {
+    const postFormData = {
+      userId,
+      title,
+      body,
+      tags,
+      reactions,
+    };
+
+    dispatch({
+      type: "CREATE_POST",
+      payload: postFormData,
+    });
+  };
+
   const deletePost = (postId) => {
     dispatch({
       type: "DELETE_POST",

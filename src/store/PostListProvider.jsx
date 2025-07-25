@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { generateId } from "../utils/generateId";
 
 export const PostListContext = createContext({
   postList: [],
@@ -12,7 +13,8 @@ const postListReducer = (state, { type, payload }) => {
       return state.filter((post) => post.id !== payload.postId);
       break;
     case "CREATE_POST":
-      return [...state, payload];
+      return [payload, ...state];
+      break;
     default:
       return state;
   }
@@ -51,6 +53,7 @@ const PostListProvider = ({ children }) => {
 
   const createPost = (userId, title, body, tags, reactions) => {
     const postFormData = {
+      id: generateId(),
       userId,
       title,
       body,
@@ -58,6 +61,7 @@ const PostListProvider = ({ children }) => {
       reactions,
     };
 
+    console.log(postFormData);
     dispatch({
       type: "CREATE_POST",
       payload: postFormData,

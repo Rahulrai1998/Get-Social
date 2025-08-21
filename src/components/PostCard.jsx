@@ -5,6 +5,7 @@ import avtr from "../assets/portfolio-dp.jpg";
 
 const PostCard = ({ title, body, tags, reactions, id }) => {
   const { deletePost } = useContext(PostListContext);
+
   return (
     <div
       className="card mx-auto w-100 post-card my-3"
@@ -12,7 +13,7 @@ const PostCard = ({ title, body, tags, reactions, id }) => {
       aria-label="post"
     >
       <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        {reactions}
+        {reactions?.likes + reactions?.dislikes}
         <span className="visually-hidden">unread messages</span>
       </span>
 
@@ -34,7 +35,7 @@ const PostCard = ({ title, body, tags, reactions, id }) => {
         <p className="card-text">{body}</p>
         <div>
           {" "}
-          {tags.map((tag, i) => (
+          {tags?.map((tag, i) => (
             <span
               key={i}
               className="badge rounded-pill text-bg-primary me-1 hashtag"

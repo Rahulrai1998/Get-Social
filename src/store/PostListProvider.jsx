@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 import { generateId } from "../utils/generateId";
 
 export const PostListContext = createContext({
@@ -7,14 +7,24 @@ export const PostListContext = createContext({
   deletePost: () => {},
 });
 
+const initialState = {
+  posts: [],
+  isLoading: false,
+};
+
 const postListReducer = (state, { type, payload }) => {
   switch (type) {
     case "DELETE_POST":
-      return state.filter((post) => post.id !== payload.postId);
-      break;
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post.id !== payload.postId),
+      };
     case "CREATE_POST":
-      return [payload, ...state];
-      break;
+      return { ...state, posts: [payload, ...state.posts] };
+    case "SET_LOADING":
+      return { ...state, isLoading: payload };
+    case "ADD_API_DATA":
+      return { ...state, posts: [...payload] };
     default:
       return state;
   }
@@ -49,7 +59,30 @@ const DEFAULT_POST_LIST = [
 
 const PostListProvider = ({ children }) => {
   //WE ARE USING CONTEXT HERE FOR THE PURPOSE OF GLOBAL STATE MANAGEMENT
-  const [postList, dispatch] = useReducer(postListReducer, DEFAULT_POST_LIST);
+  const [postList, dispatch] = useReducer(postListReducer, initialState);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      dispatch({ type: "SET_LOADING", payload: true });
+      try {
+        const response = await fetch("https://dummyjson.com/posts");
+        const data = await response.json();
+        dispatch({
+          type: "ADD_API_DATA",
+          payload: data.posts,
+        });
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      } finally {
+        dispatch({ type: "SET_LOADING", payload: false });
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  console.log("test", postList);
 
   const createPost = (userId, title, body, tags, reactions) => {
     const postFormData = {
@@ -61,7 +94,6 @@ const PostListProvider = ({ children }) => {
       reactions,
     };
 
-    console.log(postFormData);
     dispatch({
       type: "CREATE_POST",
       payload: postFormData,

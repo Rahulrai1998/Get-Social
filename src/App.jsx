@@ -22,7 +22,7 @@ function App() {
         <Sidebar selectedTab={selectedTab} onTabClick={handleTabChange} />
         <div className="w-100 overflow-y-auto">
           {/* <Header /> */}
-          {<CreatePostHome />}
+          {selectedTab === "Home" && <CreatePostHome />}
           {selectedTab === "Home" && <PostList />}{" "}
           {selectedTab === "CreatePost" && <CreatePostForm />}
           {/* <Footer /> */}

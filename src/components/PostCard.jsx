@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { MdDelete } from "react-icons/md";
 import { PostListContext } from "../store/PostListProvider";
 import avtr from "../assets/portfolio-dp.jpg";
+import LikeDislike from "./LikeDislike";
 
 const PostCard = ({ title, body, tags, reactions, id }) => {
   const { deletePost } = useContext(PostListContext);
+  console.log(reactions);
 
   return (
     <div
@@ -12,10 +14,10 @@ const PostCard = ({ title, body, tags, reactions, id }) => {
       style={{ width: "18rem" }}
       aria-label="post"
     >
-      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         {reactions?.likes + reactions?.dislikes}
         <span className="visually-hidden">unread messages</span>
-      </span>
+      </span> */}
 
       {/* <img src="..." className="card-img-top" alt="..." /> */}
       <div className="card-body">
@@ -33,14 +35,16 @@ const PostCard = ({ title, body, tags, reactions, id }) => {
           </span>
         </h5>
         <p className="card-text">{body}</p>
-        <div>
-          {" "}
-          {tags?.map((tag, i) => (
-            <span
-              key={i}
-              className="badge rounded-pill text-bg-primary me-1 hashtag"
-            >{`#${tag}`}</span>
-          ))}
+        <div className={"d-flex justify-content-between"}>
+          <div>
+            {tags?.map((tag, i) => (
+              <span
+                key={i}
+                className="badge rounded-pill text-bg-primary me-1 hashtag"
+              >{`#${tag}`}</span>
+            ))}
+          </div>
+          <LikeDislike {...reactions} />
         </div>
       </div>
     </div>

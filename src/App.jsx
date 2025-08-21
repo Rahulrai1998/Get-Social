@@ -20,7 +20,7 @@ function App() {
     <PostListProvider>
       <div className="d-flex" style={{ height: "100vh" }}>
         <Sidebar selectedTab={selectedTab} onTabClick={handleTabChange} />
-        <div className="w-100 overflow-y-auto">
+        <div className="w-100 overflow-y-auto p-4">
           {/* <Header /> */}
           {selectedTab === "Home" && <CreatePostHome />}
           {selectedTab === "Home" && <PostList />}{" "}

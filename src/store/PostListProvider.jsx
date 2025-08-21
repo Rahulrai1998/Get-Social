@@ -1,4 +1,10 @@
-import React, { createContext, useEffect, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { generateId } from "../utils/generateId";
 
 export const PostListContext = createContext({
@@ -84,30 +90,36 @@ const PostListProvider = ({ children }) => {
 
   console.log("test", postList);
 
-  const createPost = (userId, title, body, tags, reactions) => {
-    const postFormData = {
-      id: generateId(),
-      userId,
-      title,
-      body,
-      tags,
-      reactions,
-    };
+  const createPost = useCallback(
+    (userId, title, body, tags, reactions) => {
+      const postFormData = {
+        id: generateId(),
+        userId,
+        title,
+        body,
+        tags,
+        reactions,
+      };
 
-    dispatch({
-      type: "CREATE_POST",
-      payload: postFormData,
-    });
-  };
+      dispatch({
+        type: "CREATE_POST",
+        payload: postFormData,
+      });
+    },
+    [dispatch]
+  );
 
-  const deletePost = (postId) => {
-    dispatch({
-      type: "DELETE_POST",
-      payload: {
-        postId,
-      },
-    });
-  };
+  const deletePost = useCallback(
+    (postId) => {
+      dispatch({
+        type: "DELETE_POST",
+        payload: {
+          postId,
+        },
+      });
+    },
+    [dispatch]
+  );
 
   return (
     <PostListContext value={{ postList, createPost, deletePost }}>

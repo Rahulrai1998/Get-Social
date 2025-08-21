@@ -68,10 +68,13 @@ const PostListProvider = ({ children }) => {
   const [postList, dispatch] = useReducer(postListReducer, initialState);
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchPosts = async () => {
       dispatch({ type: "SET_LOADING", payload: true });
       try {
-        const response = await fetch("https://dummyjson.com/posts");
+        const response = await fetch("https://dummyjson.com/posts", {
+          signal: controller.signal,
+        });
         const data = await response.json();
         dispatch({
           type: "ADD_API_DATA",
@@ -83,11 +86,9 @@ const PostListProvider = ({ children }) => {
         dispatch({ type: "SET_LOADING", payload: false });
       }
     };
-
     fetchPosts();
-
     return () => {
-      console.log("Cleaning up");
+      controller.abort();
     };
   }, []);
 

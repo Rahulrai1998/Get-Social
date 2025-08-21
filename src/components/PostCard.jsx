@@ -6,11 +6,10 @@ import LikeDislike from "./LikeDislike";
 
 const PostCard = ({ title, body, tags, reactions, id }) => {
   const { deletePost } = useContext(PostListContext);
-  console.log(reactions);
 
   return (
     <div
-      className="card mx-auto w-100 post-card my-3"
+      className="card mx-auto w-100 post-card my-3 card-wrapper"
       style={{ width: "18rem" }}
       aria-label="post"
     >
@@ -21,15 +20,17 @@ const PostCard = ({ title, body, tags, reactions, id }) => {
 
       {/* <img src="..." className="card-img-top" alt="..." /> */}
       <div className="card-body">
-        <h5 className="card-title">
-          <img
-            src={avtr}
-            alt=""
-            width="36"
-            height="36"
-            className="rounded-circle flex-shrink-0 object-fit-cover me-2"
-          />
-          {title}
+        <h5 className="card-title d-flex justify-content-between">
+          <p>
+            <img
+              src={avtr}
+              alt=""
+              width="36"
+              height="36"
+              className="rounded-circle flex-shrink-0 object-fit-cover me-2"
+            />
+            {title}
+          </p>
           <span className="ms-1 delete-icon" onClick={() => deletePost(id)}>
             <MdDelete />
           </span>

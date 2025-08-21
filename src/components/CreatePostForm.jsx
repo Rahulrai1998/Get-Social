@@ -17,6 +17,7 @@ const CreatePostForm = () => {
     const tags = tagsRef.current.value.split(" ");
     const reactions = reactionsRef.current.value;
 
+    console.log(userId, title, body, tags, reactions);
     createPost(userId, title, body, tags, reactions);
   };
 

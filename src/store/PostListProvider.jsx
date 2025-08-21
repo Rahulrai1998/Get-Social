@@ -66,7 +66,6 @@ const DEFAULT_POST_LIST = [
 const PostListProvider = ({ children }) => {
   //WE ARE USING CONTEXT HERE FOR THE PURPOSE OF GLOBAL STATE MANAGEMENT
   const [postList, dispatch] = useReducer(postListReducer, initialState);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -86,9 +85,11 @@ const PostListProvider = ({ children }) => {
     };
 
     fetchPosts();
-  }, []);
 
-  console.log("test", postList);
+    return () => {
+      console.log("Cleaning up");
+    };
+  }, []);
 
   const createPost = useCallback(
     (userId, title, body, tags, reactions) => {

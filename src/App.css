@@ -26,3 +26,12 @@ body {
 .form-container {
   max-width: 50%;
 }
+
+.card-wrapper {
+  cursor: pointer;
+}
+.card-wrapper:hover {
+  border: 1px solid rgb(125, 125, 244, 0.5);
+  background-color: rgb(125, 125, 244, 0.1);
+  transition: all 300ms ease-in-out;
+}

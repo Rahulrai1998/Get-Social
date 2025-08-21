@@ -8,7 +8,7 @@ const CreatePostHome = () => {
   };
   return (
     <>
-      <div className="mx-auto home-create-post cursor-pointer">
+      <div className="mx-auto home-create-post cursor-pointer sticky-top bg-white">
         <button
           onClick={handleOpenModal}
           className="card btn active w-100 mt-3 d-flex justify-content-end flex-row"

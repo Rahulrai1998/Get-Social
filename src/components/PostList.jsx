@@ -14,7 +14,8 @@ const PostList = () => {
   return (
     <div className="mx-auto post-list">
       {postList.isLoading && <Loader />}
-      {postList.posts &&
+      {!postList.isLoading &&
+        postList.posts &&
         postList?.posts?.map((post) => <PostCard {...post} key={post.id} />)}
     </div>
   );
